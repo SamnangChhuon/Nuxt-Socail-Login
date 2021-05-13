@@ -45,10 +45,10 @@ export default {
   },
   computed: {
     picture() {
-      if (this.$auth.user.picture) {
-        return this.$auth.user.picture
-      } else if (this.$auth.user.picture.data.url) {
+      if (this.$auth.user.picture.data.url) {
         return this.$auth.user.picture.data.url
+      } else if (this.$auth.user.picture) {
+        return this.$auth.user.picture
       } else {
         return this.$auth.user.avatar_url
       }

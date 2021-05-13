@@ -21,7 +21,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/vue-fb-customer-chat.js', ssr: true }
+    { src: '~/plugins/vue-fb-customer-chat.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -57,7 +57,7 @@ export default {
           userInfo: 'https://graph.facebook.com/v6.0/me?fields=id,about,name,picture{url},email,birthday'
         },
         clientId: '234329191417245',
-        scope: ['public_profile', 'email', 'user_birthday']
+        scope: ['public_profile', 'email']
       },
     }
   }

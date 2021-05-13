@@ -5,22 +5,30 @@
       <h1 class="title">
         project-research
       </h1>
+      <b-alert v-if="errorMessage" show variant="danger">
+      {{ errorMessage }}
+    </b-alert>
+    <b-alert v-if="$auth.$state.redirect" show>
+      You have to login before accessing to
+      <strong>{{ $auth.$state.redirect }}</strong>
+    </b-alert>
       <div class="links">
         <a
-          href="https://nuxtjs.org/"
+          href="/"
           target="_blank"
           rel="noopener noreferrer"
           class="button--green"
+          @click="$auth.loginWith(facebook)"
         >
-          Documentation
+          Login with Facebook
         </a>
         <a
-          href="https://github.com/nuxt/nuxt.js"
+          href="/"
           target="_blank"
           rel="noopener noreferrer"
           class="button--grey"
         >
-          GitHub
+          Login with Phone Number to Telegram
         </a>
       </div>
     </div>
@@ -28,7 +36,34 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      username: '',
+      password: '123',
+      error: null
+    }
+  },
+  computed: {
+    errorMessage() {
+      const { error } = this
+      if (!error || typeof error === 'string') {
+        return error
+      }
+      let msg = ''
+      if (error.message) {
+        msg += error.message
+      }
+      if (error.errors) {
+        msg += `(${JSON.stringify(error.errors)
+          .replace(/[{}"[\]]/g, '')
+          .replace(/:/g, ': ')
+          .replace(/,/g, ' ')})`
+      }
+      return msg
+    }
+  }
+}
 </script>
 
 <style>

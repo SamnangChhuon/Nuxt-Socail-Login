@@ -32,9 +32,31 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  axios: {
+    proxy: true
+  },
+
+  auth: {
+    redirect: {
+      callback: '/callback',
+      logout: '/signed-out'
+    },
+    strategies: {
+      facebook: {
+        endpoints: {
+          userInfo: 'https://graph.facebook.com/v6.0/me?fields=id,about,name,picture{url},email,birthday'
+        },
+        clientId: '...',
+        scope: ['public_profile', 'email', 'user_birthday']
+      },
+    }
   }
 }

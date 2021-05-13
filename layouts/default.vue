@@ -41,20 +41,11 @@
 export default {
   data() {
     return {
-      openid: '',
-      picture: '',
-      avatar_url: ''
     }
   },
   computed: {
     picture() {
-        this.$auth.user.picture = this.openid
-        this.$auth.user.picture.data.url = this.picture
-        this.$auth.user.avatar_url = this.avatar_url
-
-        get(this.$auth.user, 'picture') || // OpenID
-        get(this.$auth.user, 'picture.data.url') || // Facebook graph API
-        get(this.$auth.user, 'avatar_url')
+      return this.$auth.user.picture || this.$auth.user.picture.data.url || this.$auth.user.avatar_url
     }
   }
 }

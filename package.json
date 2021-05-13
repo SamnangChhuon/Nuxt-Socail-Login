@@ -15,7 +15,8 @@
     "nuxt": "^2.15.3",
     "sala-components": "^0.3.4",
     "sass": "^1.32.13",
-    "vuelidate": "^0.7.6"
+    "vuelidate": "^0.7.6",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "node-sass": "^4.9.0",

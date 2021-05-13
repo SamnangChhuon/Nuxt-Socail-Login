@@ -13,15 +13,12 @@
       <strong>{{ $auth.$state.redirect }}</strong>
     </b-alert>
       <div class="links">
-        <a
-          href="/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
           class="button--green"
-          @click="$auth.loginWith(facebook)"
+          @click="$auth.loginWith('facebook')"
         >
           Login with Facebook
-        </a>
+        </button>
         <a
           href="/"
           target="_blank"

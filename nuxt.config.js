@@ -54,7 +54,7 @@ export default {
         endpoints: {
           userInfo: 'https://graph.facebook.com/v6.0/me?fields=id,about,name,picture{url},email,birthday'
         },
-        clientId: '...',
+        clientId: '234329191417245',
         scope: ['public_profile', 'email', 'user_birthday']
       },
     }

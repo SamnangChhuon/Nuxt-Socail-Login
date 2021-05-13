@@ -17,6 +17,7 @@
     "nuxt": "^2.15.3",
     "sala-components": "^0.3.4",
     "sass": "^1.32.13",
+    "vue-fb-customer-chat": "^0.2.0",
     "vuelidate": "^0.7.6",
     "vuex": "^3.6.2"
   },

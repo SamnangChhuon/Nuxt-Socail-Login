@@ -9,9 +9,6 @@
           <b-nav-item to="/" exact> Home </b-nav-item>
           <b-nav-item to="/public"> Public </b-nav-item>
           <b-nav-item to="/secure"> Secure </b-nav-item>
-          <b-nav-item to="/oauth2RefreshTest">
-            Oauth2 token refresh test
-          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <template v-if="$auth.$state.loggedIn">
@@ -42,13 +39,22 @@
 
 <script>
 export default {
+  data() {
+    return {
+      openid: '',
+      picture: '',
+      avatar_url: ''
+    }
+  },
   computed: {
     picture() {
-      return (
+        this.$auth.user.picture = this.openid
+        this.$auth.user.picture.data.url = this.picture
+        this.$auth.user.avatar_url = this.avatar_url
+
         get(this.$auth.user, 'picture') || // OpenID
         get(this.$auth.user, 'picture.data.url') || // Facebook graph API
         get(this.$auth.user, 'avatar_url')
-      ) // GitHub
     }
   }
 }

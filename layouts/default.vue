@@ -45,7 +45,13 @@ export default {
   },
   computed: {
     picture() {
-      return this.$auth.user.picture || this.$auth.user.picture.data.url || this.$auth.user.avatar_url
+      if (this.$auth.user.picture) {
+        return this.$auth.user.picture
+      } else if (this.$auth.user.picture.data.url) {
+        return this.$auth.user.picture.data.url
+      } else {
+        return this.$auth.user.avatar_url
+      }
     }
   }
 }
